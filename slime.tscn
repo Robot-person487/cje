@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2q6c5sugkh21"]
+
+[ext_resource type="Script" path="res://slime.gd" id="1_xpkwr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gtd2"]
+size = Vector2(70, 78.625)
+
+[node name="Slime" type="CharacterBody2D"]
+scale = Vector2(0.343946, 0.343946)
+script = ExtResource("1_xpkwr")
+SPEED = 150.0
+JUMP_VELOCITY = -350.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 101.0
+offset_bottom = 82.0
+rotation = -3.14159
+pivot_offset = Vector2(45.3954, 40.1512)
+color = Color(0.526851, 0.852443, 0.833645, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(49, 42)
+shape = SubResource("RectangleShape2D_3gtd2")

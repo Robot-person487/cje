@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bf2swp0685j7c"]
+[gd_scene load_steps=15 format=3 uid="uid://bf2swp0685j7c"]
 
 [ext_resource type="Texture2D" uid="uid://dkuy85r1xh4pv" path="res://cave_tileset.png" id="1_auquh"]
 [ext_resource type="Script" path="res://game_play.gd" id="1_lt1ae"]
 [ext_resource type="Script" path="res://player.gd" id="1_wma5g"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="4_b5a3u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g7k4b"]
 texture = ExtResource("1_auquh")
@@ -94,6 +95,9 @@ func _process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	GlobalVars.setCheck(true)
 "
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyrbn"]
+size = Vector2(20, 114)
 
 [node name="gamePlay" type="Node2D"]
 position = Vector2(-135, 44)
@@ -204,6 +208,24 @@ offset_left = -790.0
 offset_top = 74.0
 offset_right = 3123.0
 offset_bottom = 234.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(761, 223)
+script = ExtResource("4_b5a3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 47)
+shape = SubResource("RectangleShape2D_jyrbn")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 10.0
+offset_bottom = 105.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Marker2D" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(113, 48)
 
 [connection signal="area_entered" from="player/Area2D" to="Area2D/DEATH" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Area2D" to="Area2D/DEATH" method="_on_area_2d_area_entered"]

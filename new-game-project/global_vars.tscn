@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cm6yygx7w252d"]
-
-[ext_resource type="Script" path="res://global_vars.gd" id="1_kdfdt"]
-
-[node name="Global Vars" type="Node"]
-script = ExtResource("1_kdfdt")

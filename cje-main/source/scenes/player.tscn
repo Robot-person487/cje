@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpqand4lne2bb"]
+
+[ext_resource type="Script" path="res://source/scripts/player.gd" id="1_yf43h"]
+[ext_resource type="Shader" path="res://source/scenes/playerGlow.gdshader" id="2_i66um"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sllto"]
+shader = ExtResource("2_i66um")
+shader_parameter/rect_size = Vector2(0.1, 0.1)
+shader_parameter/bness = 1.0
+shader_parameter/fall_off_scale = 3.0
+shader_parameter/b_offset = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aknbm"]
+size = Vector2(44, 40)
+
+[node name="player" type="CharacterBody2D" groups=["Bounce", "Death", "player"]]
+script = ExtResource("1_yf43h")
+SPEED = 400.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_sllto")
+offset_left = -24.0
+offset_top = -23.0
+offset_right = 62.0
+offset_bottom = 63.0
+scale = Vector2(1.01809, 1.01809)
+color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 23.0
+offset_right = 64.0
+offset_bottom = 63.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_aknbm")
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["Bounce", "Death", "player"]]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

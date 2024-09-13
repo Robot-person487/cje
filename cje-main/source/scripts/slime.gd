@@ -5,6 +5,7 @@ signal bounceEntered
 @export var SPEED = 200.0
 @export var JUMP_VELOCITY = -300.0
 @export var mode = "ambush"
+@onready var slimeAnim: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta):
 	print(mode)
@@ -13,7 +14,10 @@ func _physics_process(delta):
 		# Add the gravity.
 		if not is_on_floor():
 			velocity += get_gravity() * delta
-	
+		if velocity.y < 0:
+			slimeAnim.play("up")
+		else:
+			slimeAnim.play("down");
 		velocity.x = position.direction_to(playerPosition).x * SPEED
 		# Handle jump.
 		if is_on_floor():
@@ -26,6 +30,7 @@ func _physics_process(delta):
 	else:
 		velocity += get_gravity() * delta
 		velocity.x = 0
+		slimeAnim.play("default")
 	
 	move_and_slide()
 

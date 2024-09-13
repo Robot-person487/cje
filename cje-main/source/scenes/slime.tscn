@@ -1,10 +1,98 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2q6c5sugkh21"]
+[gd_scene load_steps=19 format=3 uid="uid://d2q6c5sugkh21"]
 
 [ext_resource type="Script" path="res://source/scripts/slime.gd" id="1_qm7gm"]
-[ext_resource type="Texture2D" uid="uid://udeqixgmw5lc" path="res://assets/images/Sprite-0002.png" id="2_gmp70"]
+[ext_resource type="Texture2D" uid="uid://wypiuml0wdnj" path="res://assets/sprites - Copy/swime big.png" id="2_7jgrx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2hp7"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8qv7"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e56sj"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t85fk"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwjix"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv0xb"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(1024, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfjhy"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkdyj"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo4s1"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jf8h"]
+atlas = ExtResource("2_7jgrx")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kpqc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2hp7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8qv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e56sj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t85fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwjix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv0xb")
+}],
+"loop": true,
+"name": &"down",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfjhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkdyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo4s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jf8h")
+}],
+"loop": true,
+"name": &"up",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gtd2"]
-size = Vector2(67.9657, 42.3058)
+size = Vector2(67.9657, 56.8699)
 
 [sub_resource type="GDScript" id="GDScript_ua2xa"]
 script/source = "extends Area2D
@@ -21,13 +109,13 @@ func _process(delta):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7q54e"]
-size = Vector2(69.7784, 5.81487)
+size = Vector2(69.7784, 11.4031)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d23hb"]
 radius = 959.512
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnjkk"]
-size = Vector2(70.6837, 42.4786)
+size = Vector2(70.6837, 52.1879)
 
 [node name="Slime" type="CharacterBody2D" groups=["Bounce"]]
 position = Vector2(-5, -27)
@@ -36,14 +124,14 @@ script = ExtResource("1_qm7gm")
 SPEED = 150.0
 JUMP_VELOCITY = -550.0
 
-[node name="ColorRect" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(41.0652, 41.0652)
-scale = Vector2(5.04286, 5.04286)
-texture = ExtResource("2_gmp70")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(41.2649, 58.2563)
+scale = Vector2(0.327123, 0.327123)
+sprite_frames = SubResource("SpriteFrames_5kpqc")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(41.2649, 58.9495)
+position = Vector2(41.2649, 66.2316)
 shape = SubResource("RectangleShape2D_3gtd2")
 debug_color = Color(0.201138, 0.545417, 0.759715, 0.42)
 
@@ -51,7 +139,7 @@ debug_color = Color(0.201138, 0.545417, 0.759715, 0.42)
 script = SubResource("GDScript_ua2xa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounce"]
-position = Vector2(40.7041, 34.8892)
+position = Vector2(41.2649, 37.9907)
 shape = SubResource("RectangleShape2D_7q54e")
 debug_color = Color(0.130344, 0.289516, 0.155363, 0.42)
 
@@ -68,7 +156,7 @@ debug_color = Color(0.18276, 0.529512, 0.493633, 0)
 position = Vector2(47.9726, 43.5876)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Death"]
-position = Vector2(-6.85301, 16.4892)
+position = Vector2(-6.85301, 26.1986)
 shape = SubResource("RectangleShape2D_gnjkk")
 debug_color = Color(0.97632, 0, 0.416338, 0)
 

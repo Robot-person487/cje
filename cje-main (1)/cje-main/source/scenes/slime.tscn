@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2q6c5sugkh21"]
+
+[ext_resource type="Script" path="res://source/scripts/slime.gd" id="1_qm7gm"]
+[ext_resource type="Texture2D" uid="uid://udeqixgmw5lc" path="res://assets/images/Sprite-0002.png" id="2_gmp70"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gtd2"]
+size = Vector2(69.7784, 43.6115)
+
+[sub_resource type="GDScript" id="GDScript_ua2xa"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7q54e"]
+size = Vector2(69.7784, 5.81487)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d23hb"]
+radius = 959.512
+
+[node name="Slime" type="CharacterBody2D" groups=["Bounce"]]
+position = Vector2(-5, -27)
+scale = Vector2(0.823945, 0.823945)
+script = ExtResource("1_qm7gm")
+SPEED = 150.0
+JUMP_VELOCITY = -550.0
+
+[node name="ColorRect" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(41.0652, 41.0652)
+scale = Vector2(5.04286, 5.04286)
+texture = ExtResource("2_gmp70")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(40.7041, 59.6024)
+shape = SubResource("RectangleShape2D_3gtd2")
+debug_color = Color(0.696563, 3.36915e-07, 0.363904, 0.42)
+
+[node name="Bounce" type="Area2D" parent="."]
+script = SubResource("GDScript_ua2xa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounce"]
+position = Vector2(40.7041, 34.8892)
+shape = SubResource("RectangleShape2D_7q54e")
+debug_color = Color(0.130344, 0.289516, 0.155363, 0.42)
+
+[node name="PlayerDectection" type="Area2D" parent="."]
+position = Vector2(47.9726, 43.5876)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDectection"]
+shape = SubResource("CircleShape2D_d23hb")
+one_way_collision_margin = 0.0
+debug_color = Color(0.875346, 0.891273, 0.590825, 0.42)
+
+[connection signal="body_entered" from="Bounce" to="." method="_on_bounce_area_entered"]
+[connection signal="body_entered" from="PlayerDectection" to="." method="_on_player_dectection_body_entered"]
+[connection signal="body_exited" from="PlayerDectection" to="." method="_on_player_dectection_body_exited"]

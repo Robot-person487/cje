@@ -192,10 +192,6 @@ region = Rect2(0, 0, 128, 128)
 atlas = ExtResource("4_7mj6m")
 region = Rect2(0, 128, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmo4n"]
-atlas = ExtResource("4_7mj6m")
-region = Rect2(0, 0, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mxy8"]
 atlas = ExtResource("4_7mj6m")
 region = Rect2(128, 0, 128, 128)
@@ -207,6 +203,10 @@ region = Rect2(256, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fn3jk"]
 atlas = ExtResource("4_7mj6m")
 region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmo4n"]
+atlas = ExtResource("4_7mj6m")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_53mgl"]
 animations = [{
@@ -236,9 +236,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nmo4n")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_4mxy8")
 }, {
 "duration": 1.0,
@@ -246,6 +243,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fn3jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmo4n")
 }],
 "loop": true,
 "name": &"walk",
@@ -449,6 +449,7 @@ position = Vector2(19, 9)
 sprite_frames = SubResource("SpriteFrames_53mgl")
 animation = &"walk"
 autoplay = "idle"
+frame_progress = 0.396186
 
 [node name="AnimatedSprite2DRHand" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

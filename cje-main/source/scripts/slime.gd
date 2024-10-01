@@ -52,4 +52,4 @@ func _on_player_dectection_body_exited(body):
 
 func _on_player_death_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("player")):
-		GlobalVars.setDeath(true)
+		GlobalVars.reducePlayerHealth(25)

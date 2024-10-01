@@ -4,11 +4,11 @@ signal bounceEntered
 
 @export var SPEED = 200.0
 @export var JUMP_VELOCITY = -300.0
-@export var mode = "ambush"
+@export var mode = "idle"
 @onready var slimeAnim: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta):
-	print(mode)
+	#print(mode)
 	var playerPosition = GlobalVars.getPlayerLoco()
 	if (mode == "ambush") :
 		# Add the gravity.

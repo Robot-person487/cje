@@ -24,3 +24,8 @@ func _on_slime_bounce_entered():
 func _on_Death_entered(body):
 	if (body.is_in_group("Death")) :
 		GlobalVars.setDeath(true)
+
+
+func _on_slime_2_bounce_entered() -> void:
+	$player.velocity.y = -600
+	$player.bounceBuildUp += 50

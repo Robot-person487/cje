@@ -8,4 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$HSlider.value = GlobalVars.getPlayerHealth()
+	$Container/ProgressBar.value = GlobalVars.getPlayerHealth()

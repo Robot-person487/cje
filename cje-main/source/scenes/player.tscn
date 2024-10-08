@@ -1,5 +1,6 @@
-[gd_scene load_steps=57 format=3 uid="uid://dpqand4lne2bb"]
+[gd_scene load_steps=59 format=3 uid="uid://dpqand4lne2bb"]
 
+[ext_resource type="Shader" path="res://source/shaders/shock.gdshader" id="1_7dos5"]
 [ext_resource type="Script" path="res://source/scripts/player.gd" id="1_yf43h"]
 [ext_resource type="Shader" path="res://source/shaders/playerGlow.gdshader" id="2_i66um"]
 [ext_resource type="PackedScene" uid="uid://b4ihb1rc6e15q" path="res://player_ui.tscn" id="2_pbuxy"]
@@ -180,6 +181,12 @@ animations = [{
 "name": &"right_punch",
 "speed": 5.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a716n"]
+shader = ExtResource("1_7dos5")
+shader_parameter/shock_color = Color(1, 0, 0, 1)
+shader_parameter/amplitude = 30.0
+shader_parameter/frequecy = 10.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4ilk"]
 atlas = ExtResource("4_7mj6m")
@@ -424,6 +431,10 @@ SPEED = 400.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Player UI" parent="CanvasLayer" instance=ExtResource("2_pbuxy")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_sllto")
@@ -450,6 +461,7 @@ sprite_frames = SubResource("SpriteFrames_w33w3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_a716n")
 position = Vector2(19, 9)
 sprite_frames = SubResource("SpriteFrames_53mgl")
 animation = &"walk"

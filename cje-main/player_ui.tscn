@@ -1,20 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4ihb1rc6e15q"]
+[gd_scene load_steps=6 format=3 uid="uid://b4ihb1rc6e15q"]
 
 [ext_resource type="Script" path="res://player_ui.gd" id="1_7gn2u"]
+[ext_resource type="Texture2D" uid="uid://c4l3u34y85jqi" path="res://assets/images/Heart.png" id="2_ahwxq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qss3f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pqa1m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g23wc"]
+bg_color = Color(0.810717, 0.686203, 0.228662, 1)
 
 [node name="Player UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7gn2u")
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="Container" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 256.0
-offset_top = 24.0
-offset_right = 896.0
-offset_bottom = 72.0
-editable = false
+offset_left = 6.0
+offset_top = -2.0
+offset_right = 470.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qss3f")
+
+[node name="ColorRect2" type="ColorRect" parent="Container"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 41.0
+offset_right = 84.0
+offset_bottom = 81.0
+color = Color(1, 1, 1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Container"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 434.0
+offset_bottom = 54.0
+color = Color(0.0514353, 0.0572591, 0.00914664, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="Container"]
+layout_mode = 2
+offset_left = 23.0
+offset_top = 23.0
+offset_right = 429.0
+offset_bottom = 49.0
+theme_override_styles/background = SubResource("StyleBoxTexture_pqa1m")
+theme_override_styles/fill = SubResource("StyleBoxFlat_g23wc")
+value = 50.0
+rounded = true
+allow_greater = true
+allow_lesser = true
+show_percentage = false
+
+[node name="Heart" type="Sprite2D" parent="Container"]
+texture_filter = 1
+position = Vector2(44, 41)
+scale = Vector2(5.39904, 5.39904)
+texture = ExtResource("2_ahwxq")

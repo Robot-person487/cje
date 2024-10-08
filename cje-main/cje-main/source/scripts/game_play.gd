@@ -10,15 +10,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (GlobalVars.getDeath()) :
+	if (GlobalVars.getDeath() or GlobalVars.getPlayerHealth() <= 0) :
 		print(GlobalVars.getDeath())
 		GlobalVars.setDeath(false)
+		GlobalVars.addPlayerHealth(100)
 		get_tree().reload_current_scene()
 
 
 func _on_slime_bounce_entered():
-	$player.velocity.y += -600
-	$player.bounceBuildUp += 100
+	$player.velocity.y = -830
+	$player.bounceBuildUp += 50
 
 
 func _on_Death_entered(body):
@@ -27,7 +28,7 @@ func _on_Death_entered(body):
 
 
 func _on_slime_2_bounce_entered() -> void:
-	$player.velocity.y = -600
+	$player.velocity.y = -830
 	$player.bounceBuildUp += 50
 
 

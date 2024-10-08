@@ -109,7 +109,7 @@ func _process(delta):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7q54e"]
-size = Vector2(69.7784, 11.4031)
+size = Vector2(69.7784, 27.9145)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d23hb"]
 radius = 959.512
@@ -139,7 +139,7 @@ debug_color = Color(0.201138, 0.545417, 0.759715, 0.42)
 script = SubResource("GDScript_ua2xa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounce"]
-position = Vector2(41.2649, 37.9907)
+position = Vector2(41.2649, 43.0854)
 shape = SubResource("RectangleShape2D_7q54e")
 debug_color = Color(0.130344, 0.289516, 0.155363, 0.42)
 

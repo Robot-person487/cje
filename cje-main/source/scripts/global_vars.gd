@@ -2,6 +2,7 @@ extends Node
 
 var death : bool = false
 var playerLoco : Vector2
+var playerHealth : float = 100.0
 
 func setDeath (para : bool) :
 	death = para
@@ -14,11 +15,15 @@ func setPlayerLoco(para : Vector2) :
 	
 func getPlayerLoco() :
 	return playerLoco
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
+func setPlayerHealth(para: float) :
+	playerHealth = para
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func getPlayerHealth() :
+	return playerHealth
+
+func reducePlayerHealth (para: float) :
+	playerHealth -= para
+	
+func addPlayerHealth (para: float) :
+	playerHealth += para

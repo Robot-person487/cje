@@ -264,7 +264,7 @@ position = Vector2(602, -21.5)
 shape = SubResource("WorldBoundaryShape2D_gyscw")
 
 [node name="player" parent="." instance=ExtResource("6_4aee7")]
-position = Vector2(315, 224)
+position = Vector2(312, 224)
 
 [node name="Slime" parent="." instance=ExtResource("7_2rkrw")]
 position = Vector2(2447, -310)

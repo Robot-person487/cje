@@ -1,7 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://dpqand4lne2bb"]
+[gd_scene load_steps=57 format=3 uid="uid://dpqand4lne2bb"]
 
 [ext_resource type="Script" path="res://source/scripts/player.gd" id="1_yf43h"]
-[ext_resource type="Shader" path="res://source/scenes/playerGlow.gdshader" id="2_i66um"]
+[ext_resource type="Shader" path="res://source/shaders/playerGlow.gdshader" id="2_i66um"]
+[ext_resource type="PackedScene" uid="uid://b4ihb1rc6e15q" path="res://player_ui.tscn" id="2_pbuxy"]
 [ext_resource type="Texture2D" uid="uid://bq1bsmfht0g2t" path="res://assets/sprites - Copy/Left Hand big.png" id="3_xdnf1"]
 [ext_resource type="Texture2D" uid="uid://bhlo65ctrsl4h" path="res://assets/sprites - Copy/Player Sprites big.png" id="4_7mj6m"]
 [ext_resource type="Texture2D" uid="uid://bawk7hrxeewo6" path="res://assets/sprites - Copy/Right Hand big.png" id="5_7mxuv"]
@@ -419,6 +420,10 @@ animations = [{
 [node name="player" type="CharacterBody2D" groups=["Bounce", "Death", "player"]]
 script = ExtResource("1_yf43h")
 SPEED = 400.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Player UI" parent="CanvasLayer" instance=ExtResource("2_pbuxy")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_sllto")

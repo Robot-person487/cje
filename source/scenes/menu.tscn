@@ -31,7 +31,7 @@ offset_bottom = 280.336
 scale = Vector2(0.996392, 0.996392)
 theme_override_fonts/font = ExtResource("2_6mpt6")
 theme_override_font_sizes/font_size = 100
-text = "Title"
+text = "A Platformer Game"
 horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="Panel"]

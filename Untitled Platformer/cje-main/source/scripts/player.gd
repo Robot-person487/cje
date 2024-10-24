@@ -5,6 +5,8 @@ extends CharacterBody2D
 var playerPos : Vector2 = position
 var bounceBuildUp = 0
 @onready var playerAnim: AnimatedSprite2D = $AnimatedSprite2D
+var previousHealth = GlobalVars.getPlayerHealth()
+
 
 
 func _physics_process(delta: float) -> void:
@@ -18,6 +20,9 @@ func _physics_process(delta: float) -> void:
 		
 
 	GlobalVars.setPlayerLoco(position)
+	
+	if (GlobalVars.getPlayerHealth() < previousHealth) :
+		$AnimationPlayer.play("Damage")
 	# Handle jump.
 
 	# Get the input direction and handle the movement/deceleration.
@@ -29,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	#else:
 	#	velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	previousHealth = GlobalVars.getPlayerHealth()
 	move_and_slide()
 
 func get_input():

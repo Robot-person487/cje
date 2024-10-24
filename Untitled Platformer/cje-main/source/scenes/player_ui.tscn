@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4ihb1rc6e15q"]
+[gd_scene load_steps=7 format=3 uid="uid://b4ihb1rc6e15q"]
 
 [ext_resource type="Script" path="res://source/scripts/player_ui.gd" id="1_7gn2u"]
+[ext_resource type="PackedScene" uid="uid://dgvokfrjq8nkf" path="res://pause.tscn" id="2_2rfs1"]
 [ext_resource type="Texture2D" uid="uid://bxrykrj60o0uk" path="res://assets/images/Heart.png" id="2_ahwxq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qss3f"]
@@ -23,12 +24,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7gn2u")
 
+[node name="Pause" parent="." instance=ExtResource("2_2rfs1")]
+visible = false
+z_index = 395
+layout_mode = 1
+offset_left = -2.0
+offset_top = -2.0
+offset_right = -2.0
+offset_bottom = -2.0
+
 [node name="Container" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 6.0
-offset_top = -2.0
-offset_right = 470.0
-offset_bottom = 78.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 466.0
+offset_bottom = 81.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qss3f")
 
 [node name="ColorRect2" type="ColorRect" parent="Container"]
@@ -66,3 +76,5 @@ texture_filter = 1
 position = Vector2(44, 41)
 scale = Vector2(5.39904, 5.39904)
 texture = ExtResource("2_ahwxq")
+
+[connection signal="pauseGame" from="Pause" to="." method="togglePause"]

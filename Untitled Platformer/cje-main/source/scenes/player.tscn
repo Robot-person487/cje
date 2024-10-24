@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dpqand4lne2bb"]
+[gd_scene load_steps=60 format=3 uid="uid://dpqand4lne2bb"]
 
 [ext_resource type="Script" path="res://source/scripts/player.gd" id="1_yf43h"]
 [ext_resource type="Shader" path="res://source/shaders/playerGlow.gdshader" id="2_i66um"]
@@ -417,6 +417,66 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="Animation" id="Animation_eprrx"]
+resource_name = "Dmage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(19, 9), Vector2(6, 14), Vector2(19, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.803039, 0.355305, 0.591801, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t3lx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(19, 9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4nl68"]
+_data = {
+"Damage": SubResource("Animation_eprrx"),
+"RESET": SubResource("Animation_t3lx6")
+}
+
 [node name="player" type="CharacterBody2D" groups=["Bounce", "Death", "player"]]
 script = ExtResource("1_yf43h")
 SPEED = 400.0
@@ -460,3 +520,9 @@ frame_progress = 0.396186
 texture_filter = 1
 position = Vector2(19, 9)
 sprite_frames = SubResource("SpriteFrames_qi4rb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_4nl68")
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bf2swp0685j7c"]
+[gd_scene load_steps=18 format=4 uid="uid://bf2swp0685j7c"]
 
 [ext_resource type="Script" path="res://source/scripts/game_play.gd" id="1_l01sm"]
 [ext_resource type="Texture2D" uid="uid://dkuy85r1xh4pv" path="res://assets/images/cave_tileset.png" id="2_4f1no"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dpqand4lne2bb" path="res://source/scenes/player.tscn" id="4_ptfq5"]
 [ext_resource type="Texture2D" uid="uid://bxcxtl3jw558s" path="res://assets/sprites - Copy/Flag .png" id="7_tyvit"]
 [ext_resource type="PackedScene" uid="uid://b8c8l1ludab3i" path="res://source/scenes/mole.tscn" id="8_1js03"]
+[ext_resource type="Texture2D" uid="uid://d2qcanaofs5i5" path="res://assets/sprites - Copy/Mr. Arnold.png" id="9_idk5g"]
+[ext_resource type="FontFile" uid="uid://dvvnff3lj57gl" path="res://assets/fonts/Zain-ExtraBold.ttf" id="10_2tlvv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g7k4b"]
 texture = ExtResource("2_4f1no")
@@ -221,6 +223,10 @@ sources/4 = SubResource("TileSetAtlasSource_hj7d6")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ll5ha"]
 radius = 28.0713
 
+[sub_resource type="LabelSettings" id="LabelSettings_yv33k"]
+font = ExtResource("10_2tlvv")
+font_size = 31
+
 [node name="gamePlay" type="Node2D"]
 position = Vector2(-135, 44)
 script = ExtResource("1_l01sm")
@@ -287,6 +293,86 @@ position = Vector2(1947, -696)
 
 [node name="Mole2" parent="." instance=ExtResource("8_1js03")]
 position = Vector2(1430, -1243)
+
+[node name="Mr_Arnold" type="Sprite2D" parent="."]
+z_index = -120
+position = Vector2(2439, -1558)
+scale = Vector2(0.316211, 0.283013)
+texture = ExtResource("9_idk5g")
+
+[node name="Label" type="Label" parent="Mr_Arnold"]
+offset_left = -41.1118
+offset_top = 272.073
+offset_right = -0.111816
+offset_bottom = 321.073
+text = "Top
+G"
+label_settings = SubResource("LabelSettings_yv33k")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Mr_Arnold"]
+z_index = -155
+offset_left = -28.4616
+offset_top = 236.739
+offset_right = -9.46158
+offset_bottom = 384.739
+
+[node name="ColorRect6" type="ColorRect" parent="Mr_Arnold"]
+z_index = -120
+offset_left = -37.949
+offset_top = 236.739
+offset_right = 0.0509758
+offset_bottom = 384.739
+color = Color(0.41598, 0.41598, 0.41598, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Mr_Arnold"]
+z_index = -120
+offset_left = -38.0
+offset_top = 237.0
+offset_right = -8.0
+offset_bottom = 316.0
+rotation = 0.363461
+color = Color(0.41598, 0.41598, 0.41598, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="Mr_Arnold"]
+z_index = -120
+offset_left = -38.0
+offset_top = 237.0
+offset_right = -8.0
+offset_bottom = 316.0
+rotation = -0.418574
+color = Color(0.41598, 0.41598, 0.41598, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Mr_Arnold"]
+z_index = -155
+offset_left = -28.4616
+offset_top = 236.739
+offset_right = -9.46158
+offset_bottom = 384.739
+rotation = 0.392997
+
+[node name="ColorRect3" type="ColorRect" parent="Mr_Arnold"]
+z_index = -155
+offset_left = -28.4616
+offset_top = 236.739
+offset_right = -9.46158
+offset_bottom = 384.739
+rotation = -0.371572
+
+[node name="ColorRect4" type="ColorRect" parent="Mr_Arnold"]
+z_index = -155
+offset_left = -28.7079
+offset_top = 374.373
+offset_right = -9.70787
+offset_bottom = 522.373
+rotation = 0.392997
+
+[node name="ColorRect5" type="ColorRect" parent="Mr_Arnold"]
+offset_left = -28.7079
+offset_top = 374.373
+offset_right = -9.70787
+offset_bottom = 522.373
+rotation = -0.371572
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Death_entered"]
 [connection signal="bounceEntered" from="Slime" to="." method="_on_slime_bounce_entered"]
